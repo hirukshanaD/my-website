@@ -7,11 +7,8 @@ import pg from "pg";
 
 
 const db = new pg.Pool({
-    user: "myuser",
-    host: "localhost",
-    database: "Notes",
-    password: "1234", 
-    port: 5432,
+    connectionString: "postgresql://neondb_owner:npg_43sczJveldSt@ep-red-dream-apwk9wk2.c-7.us-east-1.aws.neon.tech/neondb?sslmode=require",
+    ssl: { rejectUnauthorized: false }
 });
 db.connect();
 
