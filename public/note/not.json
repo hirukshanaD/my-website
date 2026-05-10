@@ -1,0 +1,211 @@
+[
+  {
+    "Title": "Introduction to ROS 298",
+    "Date": "2026-05-09",
+    "Author": "Hirukshana",
+    "Paragraphs": [
+      {
+        "id": 1,
+        "text": "ROS 2 is a robotics middleware framework used for robot communication.",
+        "picture": null
+      },
+      {
+        "id": 2,
+        "text": "ROS 2 uses nodes and topics for distributed systems.",
+        "picture": "images/ros2-topics.png"
+      }
+    ],
+    "CoverPicture": "images/ros2-cover.jpg",
+    "Tags": ["ROS2", "Robotics"]
+  },
+
+  {
+    "Title": "Getting Started with ESP32",
+    "Date": "2026-05-08",
+    "Author": "Hirukshana",
+    "Paragraphs": [
+      {
+        "id": 1,
+        "text": "ESP32 is a low-cost microcontroller with WiFi and Bluetooth.",
+        "picture": null
+      },
+      {
+        "id": 2,
+        "text": "It is widely used in IoT and embedded systems.",
+        "picture": "images/esp32-board.jpg"
+      }
+    ],
+    "CoverPicture": "images/esp32-cover.jpg",
+    "Tags": ["ESP32", "IoT"]
+  },
+
+  {
+    "Title": "Node.js Basics",
+    "Date": "2026-05-07",
+    "Author": "Hirukshana",
+    "Paragraphs": [
+      {
+        "id": 1,
+        "text": "Node.js allows JavaScript to run on the server side.",
+        "picture": null
+      },
+      {
+        "id": 2,
+        "text": "It uses an event-driven non-blocking architecture.",
+        "picture": "images/nodejs-eventloop.png"
+      }
+    ],
+    "CoverPicture": "images/nodejs-cover.jpg",
+    "Tags": ["NodeJS", "Backend"]
+  },
+
+  {
+    "Title": "Understanding Binary Search",
+    "Date": "2026-05-06",
+    "Author": "Hirukshana",
+    "Paragraphs": [
+      {
+        "id": 1,
+        "text": "Binary search works on sorted arrays.",
+        "picture": null
+      },
+      {
+        "id": 2,
+        "text": "It repeatedly divides the search interval into halves.",
+        "picture": "images/binary-search.png"
+      }
+    ],
+    "CoverPicture": "images/search-cover.jpg",
+    "Tags": ["Algorithms", "Search"]
+  },
+
+  {
+    "Title": "Introduction to SDL2",
+    "Date": "2026-05-05",
+    "Author": "Hirukshana",
+    "Paragraphs": [
+      {
+        "id": 1,
+        "text": "SDL2 is a multimedia library for games and graphics.",
+        "picture": null
+      },
+      {
+        "id": 2,
+        "text": "It supports audio, keyboard, mouse, and rendering APIs.",
+        "picture": "images/sdl-window.png"
+      }
+    ],
+    "CoverPicture": "images/sdl-cover.jpg",
+    "Tags": ["SDL2", "GameDev"]
+  },
+
+  {
+    "Title": "How WiFi Communication Works",
+    "Date": "2026-05-04",
+    "Author": "Hirukshana",
+    "Paragraphs": [
+      {
+        "id": 1,
+        "text": "WiFi allows wireless communication using radio signals.",
+        "picture": null,
+        "code" : null
+      },
+      {
+        "id": 2,
+        "text": "Routers manage packet forwarding between devices.",
+        "picture": "images/wifi-router.png",
+        "code" : null
+      }
+    ],
+    "CoverPicture": "images/wifi-cover.jpg",
+    "Tags": ["Networking", "WiFi"]
+  },
+
+  {
+    "Title": "Understanding JSON",
+    "Date": "2026-05-03",
+    "Author": "Hirukshana",
+    "Paragraphs": [
+      {
+        "id": 1,
+        "text": "JSON is a lightweight data-interchange format.",
+        "picture": null,
+        "code" : null
+      },
+      {
+        "id": 2,
+        "text": "It is easy for humans to read and machines to parse.",
+        "picture": "images/json-example.png",
+        "code" : null
+      }
+    ],
+    "CoverPicture": "images/json-cover.jpg",
+    "Tags": ["JSON", "Data"]
+  },
+
+  {
+    "Title": "Introduction to Linux Commands",
+    "Date": "2026-05-02",
+    "Author": "Hirukshana",
+    "Paragraphs": [
+      {
+        "id": 1,
+        "text": "Linux provides powerful command-line utilities.",
+        "picture": null,
+        "code" : null
+      },
+      {
+        "id": 2,
+        "text": "Commands like ls, cd, and mkdir are commonly used.",
+        "picture": "images/linux-terminal.png",
+        "code" : null
+      }
+    ],
+    "CoverPicture": "images/linux-cover.jpg",
+    "Tags": ["Linux", "CLI"]
+  },
+
+  {
+    "Title": "Basics of Databases",
+    "Date": "2026-05-01",
+    "Author": "Hirukshana",
+    "Paragraphs": [
+      {
+        "id": 1,
+        "text": "Databases store and organize structured information.",
+        "picture": null,
+        "code" : null
+      },
+      {
+        "id": 2,
+        "text": "SQL is commonly used to query relational databases.",
+        "picture": "images/sql-query.png",
+        "code" : null
+      }
+    ],
+    "CoverPicture": "images/database-cover.jpg",
+    "Tags": ["Database", "SQL"]
+  },
+
+  {
+    "Title": "Introduction to Web Development",
+    "Date": "2026-04-30",
+    "Author": "Hirukshana",
+    "Paragraphs": [
+      {
+        "id": 1,
+        "text": "Web development includes frontend and backend technologies.",
+        "picture": null,
+        "code" : "\n const items = [12, 24, 36];\n const copy = [];\n\n items.forEach(function (item) {\n    copy.push(item);\n});\n\n console.log(copy);"
+      },
+      {
+        "id": 2,
+        "text": "HTML, CSS, and JavaScript are core frontend tools.",
+        "picture": "images/web-stack.png",
+        "code" : null
+      }
+    ],
+    "CoverPicture": "images/web-cover.jpg",
+    "Tags": ["Web", "Frontend", "Backend"]
+  }
+]

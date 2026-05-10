@@ -1,0 +1,28 @@
+<%- include("hedder.ejs")%> 
+<main>
+            <%- include("aside.ejs",{titels:titels})%>
+            <article class="vlog">
+                <section class="se1"><%= array["title"] %></section>
+                <h2></h2>
+                <% paragraph.forEach((par)=>{ %>
+                <p><%= par["text"] %></p>
+                <% if(par["picture"] != null && par["picture"] != "images/" ){ %>
+                    <figure>
+                        <img src= /<%= par["picture"] %> >
+                    <figcaption><%= par["picture"] %></figcaption>
+                </figure>
+                <% } %>
+                <% if(par["code"] != null && par["code"].length !== 0){ %>
+                    <pre>
+                        <code>
+                            <%= par["code"].length %>
+            
+                        </code>
+                    </pre>
+                <% } %>
+                <% }) %>
+                <h3><%= array["author"] %></h3>
+                <h4><%= array["date"] %></h4>
+            </article>
+        </main>
+<%- include("fotter.ejs")%>

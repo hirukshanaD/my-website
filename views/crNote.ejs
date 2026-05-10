@@ -1,0 +1,21 @@
+<%- include("hedder.ejs")%> 
+        <main>
+            <%- include("aside.ejs",{titels:titels})%>
+            <article class="form">
+                
+                <section >
+                    <section><h1>CREATE NOTE</h1></section><br>
+                    <form method="post" action="/submit">
+                        <div><label>Author Name : </label><input type="text" name="Name"><br></div>
+                        <div><label>Title :</label><input type="text" name="Title"><br></div>
+                        <div><label>Written Date :</label><input type="date" name="Date"><br></div>
+                        <div><label>sourse file</label><input type="file" name="File"></div>
+                        <div>
+                            <div><input type="submit" value="Start" class="but" name="button"></div>
+                        </div>
+                    </form>    
+                </section>
+            </article>
+        </main>
+    <%- include("fotter.ejs")%>
+<!--Create This page as get input paragraph by paragraph-->

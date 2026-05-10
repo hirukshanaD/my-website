@@ -1,0 +1,10 @@
+            <aside>
+                <h2>Recent Viwed</h2>
+                <ul>
+                
+                <% titels.forEach((titel)=>{ %>
+                                        <li><a href="/note/<%= titel["note_id"] %>"><%= titel["title"] %></a></li>
+                <%})%>
+                
+                </ul>
+            </aside>
