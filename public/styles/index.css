@@ -7,16 +7,44 @@
     }
 }
 
+@keyframes glow {
+    from {
+        text-shadow:
+            0 0 5px  rgba(109, 255, 99, 0.789),
+            0 0 10px  rgba(109, 255, 99, 0.789),
+            0 0 20px  rgba(109, 255, 99, 0.789);
+    }
+
+    to {
+        text-shadow:
+            0 0 10px #ff0291bc ,
+            0 0 20px #ff0291bc ,
+            0 0 40px #ff0291bc ,
+            0 0 80px #ff0291bc ;
+    }
+}
+
 header h1{
     text-align: center;
     font-family:  "Old Standard TT", serif;
     font-size: 80px;
     position: relative;
     transform: translate(0%,-50%); 
-    color: rgb(10, 4, 4);
+    color: rgb(255, 255, 255);
     text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+    
 
 }
+
+header h1{
+    text-shadow:
+        0 0 5px #0ff,
+        0 0 10px #0ff,
+        0 0 20px #0ff,
+        0 0 40px #0ff;
+     animation: glow 1.5s infinite alternate;
+}
+
 header,footer{
     background: url("../images/map2.png");
     background-repeat: no-repeat;
@@ -285,3 +313,85 @@ main article figure{
     background-size: 100%;
     background-repeat: repeat; 
 }
+
+.nbut{
+    display: flex;
+    position: relative;
+    transform: translate(200%,-30%);
+    color: #000000;
+    
+    text-decoration: none;
+    font-size: 20px;
+    gap: 50px;
+}
+
+.nbut .update {
+    background-color: rgba(32, 181, 32, 0.633);
+    border-radius: 5px;
+    margin: 10px;
+    padding: 10px;
+    font-weight: 700;
+
+
+}
+
+.nbut .delet{
+    color: #ffffff;
+    background-color: rgba(227, 27, 207, 0.799);
+    border-radius: 5px;
+    margin: 10px;
+    padding: 10px;
+    font-weight: 700;
+}
+
+
+
+.update:hover{
+    background: rgba(48, 211, 15, 0.1);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+    transition: border 5s, background-color 2s;
+ }
+
+ .delet:hover{
+    background: rgba(211, 15, 15, 0.1);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+    color: #000000;
+    transition: border 5s, background-color 2s;
+ }
+
+ .up textarea{
+    background-color: rgba(83, 223, 83, 0.58);
+    height: 200px;
+    color: rgb(0, 0, 0);
+    border-radius: 10px;
+    width: 75%;
+    margin: 10px;
+    padding: 10px;
+    font-size: 15px;
+ }
+
+@keyframes bod {
+    0% {
+    background-position: 200% 0; 
+  }
+  100% {
+    background-position: -120% 0; 
+  }
+}
+
+ .up div{
+    border-bottom:2px solid ;
+    border-image: linear-gradient(120deg,rgba(105, 213, 16, 0.465) 30%,rgba(255, 255, 255, 0.8) 50%, rgba(211, 9, 194, 0.477)    70%) 1;
+    background-size: 200% 100%;
+    background-position: 200% 0;
+    animation: bod 3s infinite linear;
+ }
+ .up input[type ="submit"]{
+    background-color: rgba(227, 160, 15, 0.534);
+    width: 120px;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 700;
+ }

@@ -6,7 +6,7 @@
                 <h2></h2>
                 <% paragraph.forEach((par)=>{ %>
                 <p><%= par["text"] %></p>
-                <% if(par["picture"] != null && par["picture"] != "images/" ){ %>
+                <% if(par["picture"] != "images/null" && par["picture"] != "images/" ){ %>
                     <figure>
                         <img src= /<%= par["picture"] %> >
                     <figcaption><%= par["picture"] %></figcaption>
@@ -24,5 +24,17 @@
                 <h3><%= array["author"] %></h3>
                 <h4><%= array["date"] %></h4>
             </article>
+
+            <div class="nbut">
+                
+                 <form method="get" action= "/update/<%= array["note_id"] %>" >
+                    <input type="submit" value="UPDATE" class="nbut update">
+                </form>
+
+               
+                <form method="get" action= "/delet/<%= array["note_id"] %>" >
+                    <input type="submit" value="DELET" href="" class="nbut delet">
+                </form>
+        </div>
         </main>
 <%- include("fotter.ejs")%>

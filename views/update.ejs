@@ -1,0 +1,33 @@
+<%- include("hedder.ejs")%>
+<main class="up">
+     <%- include("aside.ejs",{titels:titels})%>
+
+            <form method="post" action="/patch">
+                <div><label>Author Name : </label><input type="text" name="Name" value=<%= array["author"] %>><br></div>
+                <div><label>Title :</label><input type="text" name="Title" value=<%= array["title"] %> ><br></div>
+                <div><label>Written Date :</label><input type="date" name="Date" value= <%= array["date"]%>><br></div>
+                <div><label>sourse file</label><input type="file" name="File" multiple ></div>
+                <div><input style="display: none;" type="text" name="NO" value=<%= array["note_id"] %>></div>
+            </section>
+            <section>
+                <% paragraph.forEach((par)=>{ %>
+                <div>
+                    <div><label>Text : </label><textarea name="Text"><%= par["text"] %></textarea><br></div>
+                    <div><label>CODE :</label><textarea name="Code"><%= par["code"] %></textarea><br></div>
+                    <div><label>Picture</label><input type="file" name="img" value=<%= par["picture"] %>></div>
+                    <div><input style="display: none;" type="text" name="PNO" value=<%= par["paragraph_id"] %>></div>
+                
+                </div>
+                <% });%>
+                <div>
+                    <div><input type="submit" name="save" value="SAVE" class="but"></div>
+                    <div><input type="submit" name="button" value="ADD paragraph" class="but"></div>
+                </div>
+
+
+            </form>    
+            </section>
+
+<!--1.make form again with patch requst and lode curent data in the list-->
+</main>
+<%- include("fotter.ejs")%>

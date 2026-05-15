@@ -7,8 +7,11 @@ import pg from "pg";
 
 
 const db = new pg.Pool({
-    connectionString: "postgresql://neondb_owner:npg_43sczJveldSt@ep-red-dream-apwk9wk2.c-7.us-east-1.aws.neon.tech/neondb?sslmode=require",
-    ssl: { rejectUnauthorized: false }
+    user: "myuser",
+    host: "localhost",
+    database: "Notes",
+    password: "1234", 
+    port: 5432,
 });
 db.connect();
 
@@ -69,7 +72,7 @@ app.get("/note/:id",async(req,res) =>{
     const par = await db.query("SELECT * FROM paragraph WHERE note_id = $1;",[num]);
     const bod = await db.query("SELECT * FROM notes WHERE note_id = $1 ;",[num]);
     
-    console.log(par.rows[1]["code"].length);
+    //console.log(par.rows[1]["code"].length);
     //console.log(bod.rows);
     res.render("note.ejs",{titels:databaseOut,array:bod.rows[0],paragraph:par.rows})
 })
@@ -99,6 +102,50 @@ app.post("/submit",async(req,res)=>{
     
 });
 
+app.get("/delet/:id",async(req,res)=>{
+    const Nid = req.params.id;
+    console.log(Nid); 
+    await db.query("DELETE FROM notes WHERE note_id = $1",[Nid]);
+    res.redirect("/");
+});
+
+app.get("/update/:id",async(req,res)=>{
+    const num = req.params.id;
+    let arrays = await db.query("SELECT * FROM notes WHERE note_id = $1;",[num]);
+    let parg = await db.query("SELECT * FROM paragraph WHERE note_id = $1",[num]);
+    //console.log(arrays.rows[0]);
+    //console.log(parg.rows);  
+    res.render("update.ejs",{titels:databaseOut,array:arrays.rows[0],paragraph:parg.rows}); 
+
+});
+
+app.post("/patch",async(req,res)=>{
+      if(req.body.save == 'SAVE'){
+        console.log(req.body.Picture);
+        await db.query("UPDATE notes SET author = $1 ,title = $2 , date = $3 , file_location = $4 WHERE note_id = $5 ",[req.body["Name"],req.body["Title"],req.body["Date"],req.body["File"],req.body["NO"]]);
+        let i = 0;
+        for(i = 0;i<req.body["PNO"].length;i++){
+            const textValue = req.body["Text"] ? req.body["Text"][i] : null;
+            const codeValue = req.body["CODE"] ? req.body["CODE"][i] : null;
+            const pictureValue = req.body["Picture"] ? req.body["Picture"][i] : "";
+            console.log(req.body["Picture"]);
+            const paragraphId = req.body["PNO"][i];
+            await db.query("UPDATE paragraph SET text = $1,code = $2, picture = $3 WHERE paragraph_id = $4",[textValue, codeValue, "images/"+pictureValue, paragraphId]);
+        }
+       
+        res.redirect("/");
+    }
+     if(req.body.button = 'ADD paragraph'){
+            console.log(req.body.NO);
+            res.render("paragraph2.ejs",{par:req.body["NO"],titels:databaseOut});
+
+        }
+});
+
+app.post("/submitP",async(req,res)=>{
+    await db.query("INSERT INTO paragraph (note_id, text,code, picture) VALUES ($1, $2, $3,$4)",[req.body["NO"],req.body["Text"],req.body["Code"],"images/"+req.body["img"]]);
+    res.redirect("/");
+})
 
 app.listen(3000,()=>{
     console.log("Server running on port 3000");
