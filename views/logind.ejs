@@ -3,7 +3,18 @@
 <main class="v999">
     <div class="canves1" id="container"></div>
 
-    <div class="canves2"></div>
+    <div class="canves2">
+		<div class="logbox">
+			<form>
+				<div class="hhhhh"><h3>LOG IN</h3></div>
+				<div><label>Name :</label><input type="text"></div>
+				<div><label>passwode :</label><input type="password"></div>
+				<div class="buth"><input type="submit" value="submit"></div>
+
+			</form>
+		</div>
+
+	</div>
 </main>
 
 <script type="importmap">
@@ -198,8 +209,8 @@ let container, stats;
 
 				//
 
-				stats = new Stats();
-				container.appendChild( stats.dom );
+				//stats = new Stats();
+				//container.appendChild( stats.dom );
 
 				//
 
@@ -229,7 +240,8 @@ let container, stats;
 			function animate() {
 
 				render();
-				stats.update();
+				renderer.setAnimationLoop( animate );
+				//stats.update();
 
 			}
 
@@ -239,7 +251,8 @@ let container, stats;
 
 				mesh.rotation.x = time * 0.15;
 				mesh.rotation.y = time * 0.25;
-
+				mesh.position.x = -600;
+				mesh.position.y = -100;
 				raycaster.setFromCamera( pointer, camera );
 
 				const intersects = raycaster.intersectObject( mesh );
@@ -258,7 +271,7 @@ let container, stats;
 					linePosition.copyAt( 3, meshPosition, face.a );
 
 					mesh.updateMatrix();
-
+					scene.add( mesh );
 					line.geometry.applyMatrix4( mesh.matrix );
 
 					line.visible = true;
