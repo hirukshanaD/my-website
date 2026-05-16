@@ -1,0 +1,427 @@
+@keyframes moveLeft {
+    from {
+        background-position: 0% 50%;
+    }
+    to {
+        background-position: 100% 50%;
+    }
+}
+
+@keyframes glow {
+    from {
+        text-shadow:
+            0 0 5px  rgba(109, 255, 99, 0.789),
+            0 0 10px  rgba(109, 255, 99, 0.789),
+            0 0 20px  rgba(109, 255, 99, 0.789);
+    }
+
+    to {
+        text-shadow:
+            0 0 10px #ff0291bc ,
+            0 0 20px #ff0291bc ,
+            0 0 40px #ff0291bc ,
+            0 0 80px #ff0291bc ;
+    }
+}
+
+header h1{
+    text-align: center;
+    font-family:  "Old Standard TT", serif;
+    font-size: 80px;
+    position: relative;
+    transform: translate(0%,-50%); 
+    color: rgb(250, 244, 244);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+    
+
+}
+
+header h1{
+    text-shadow:
+        0 0 5px #0ff,
+        0 0 10px #0ff,
+        0 0 20px #0ff,
+        0 0 40px #0ff;
+     animation: glow 1.5s infinite alternate;
+}
+
+header,footer{
+    background: url("../images/map2.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100px;    
+    padding: 30px;
+    background-position: 50% 40%;
+    background-repeat: no-repeat;
+    
+}
+
+
+nev{
+    
+    grid-template-columns: 2fr 1fr ;
+    
+    grid-auto-flow: column;
+}
+
+nev ul{
+    list-style: none;
+     
+      
+}
+nev ul li{
+    float: left;
+    padding: 20px;
+    border-radius: 10PX;
+    margin-left: 10px;
+    background:linear-gradient(90deg,#ff0291bc  50%,rgba(255, 255, 255, 0.095)  50%) ;
+    background-size: 300% 300%;
+    background-position: 72% 72%;
+    transition: background-position 0.8s ease 0.2s;
+    font-weight: 700;
+    
+}
+nev ul li:hover{
+    transition: 2s;
+    background-position: 0% 0%;
+    
+}
+
+
+nev ul li a{
+    text-decoration: none;
+    color: black;
+    font-size: 20PX;
+    
+}
+
+header div{
+    
+    font-size: 50px;
+    padding: 10px;
+    font-weight: 700;
+    border-radius: 20px;
+    margin: 10px;
+    display: flex;
+    
+    flex-direction: row;
+    align-content:flex-start;
+    width: 300px;
+    background-image:linear-gradient(to left, #e91e6226, #4caf4f3e);
+    position: relative;
+    right: 0px;
+    margin-right: 0px;
+    border: 1px solid;
+    position: relative;
+    left: 0px;
+    transform: translate(300%,-240%);
+    
+}
+header div span{
+    flex: 1;
+}
+
+.v1 section form{
+    display: grid;
+    grid-template-rows: 2fr 1fr;
+    position:relative;
+    transform: translate(30%,20%);
+}
+.v1 section form input,button{
+    margin: 10px;
+    align-content: end;
+    justify-items: center;
+    border-radius: 15px;
+    border-color: rgb(42, 96, 132);
+    box-shadow: 0px 0px 0px;
+    height: 60PX;
+    background-color:  rgba(109, 255, 99, 0.789);
+    border: none;
+    border-bottom:3px solid rgb(10, 10, 10);
+    border-right:1px solid rgb(125, 125, 125);
+}
+.v1 section form input{
+    width: 400px;
+    justify-content: center;
+    align-items: center;
+}
+
+.v1 section form button{
+    background-color: rgba(109, 255, 99, 0.789);
+    width: 100px;
+    font-size: 20px;
+    font-weight: 700;
+    align-items: center;
+}
+
+main{
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    
+}
+
+article{
+    background: url("../images/note.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    margin:20px;
+    padding: 30px;
+    border-radius: 20px;
+}
+
+main aside ul{
+    list-style: none;
+    padding: 10px;
+}
+main aside ul li{
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+    background:linear-gradient(90deg,#14df0672  50%,rgba(255, 255, 255, 0.282)  50%) ;
+    background-size: 300% 300%;
+    background-position: 73% 73%;
+    transition: background-position 0.8s ease 0.2s;
+    border: none;
+}
+
+main aside ul li a{
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+    padding: 20px;
+    
+}
+
+main aside ul li:hover{
+    
+    transition: 2s;
+    background-position: 0% 0%;
+}
+footer{
+    height: 100px;
+    text-align: center;
+
+    
+}
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Full height of the viewport */
+    margin: 0;
+    background-image: linear-gradient(to left, #e91e6226, #4caf4f3e);      
+}
+
+main article .se1{
+    font-size: 70px;
+    text-align: center;
+    font-weight: 700;
+    color: #000000;
+    background-color: rgba(246, 246, 246, 0.064); 
+    text-shadow: 3px 3px 3px ;
+    padding: 5px 5px; 
+    border-radius: 8px;
+}
+ .vlog{
+    background-image: none;
+    display: flex;
+    flex-direction: column;
+}
+
+main article pre{
+    background-color: #2e343b;
+    color: white;
+    border-radius: 10px;    
+}
+
+main article pre {
+    background: #111;
+    color: #0f0;
+    padding: 10px;
+    border-radius: 15px;
+    overflow-x: auto;
+}
+
+main article img{
+    border-radius: 20px;
+    width: 500px;
+}
+main article figure{
+    position: relative;
+    transform: translate(10%,0%);
+    
+}
+.form{
+    background: url("../images/hand.png");   
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: 190%;
+}
+
+.form section form input{
+    height: 40px;
+    position: relative;
+
+}
+.form section form{
+    margin-top:30px ;
+    display: flex;
+    flex-direction: column;
+    transform: translate(-0%,-10%);
+}
+
+.form section form div{
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    
+}
+
+.form section form div textarea,input{
+    margin: 10px;
+    
+    border-radius: 15px;
+    border-color: rgb(42, 96, 132);
+    box-shadow: 0px 0px 0px;
+    height: 60PX;
+    background-color:  rgba(109, 255, 99, 0.789);
+    border: none;
+    border-bottom:3px solid rgb(10, 10, 10);
+    border-right:1px solid rgb(125, 125, 125);   
+}
+
+.form section form  label{
+    font-size: 25px;
+    font-weight: 500;
+}
+
+.form section form  .but{
+    margin: 10px;
+    border-radius: 15px;
+    border-color: rgb(42, 96, 132);
+    box-shadow: 0px 0px 0px;
+    height: 60PX;
+    background-color:  rgba(227, 25, 253, 0.964);
+    border: none;
+    border-bottom:3px solid rgb(10, 10, 10);
+    border-right:1px solid rgb(125, 125, 125);   
+    font-size: 20px;
+    font-weight: 700;
+}
+.con {
+    background: url("../images/let1.png");  
+    background-size: 100%;
+    background-repeat: repeat; 
+}
+
+.nbut{
+    display: flex;
+    position: relative;
+    transform: translate(200%,-30%);
+    color: #000000;
+    
+    text-decoration: none;
+    font-size: 20px;
+    gap: 50px;
+}
+
+.nbut .update {
+    background-color: rgba(32, 181, 32, 0.633);
+    border-radius: 5px;
+    margin: 10px;
+    padding: 10px;
+    font-weight: 700;
+
+
+}
+
+.nbut .delet{
+    color: #ffffff;
+    background-color: rgba(227, 27, 207, 0.799);
+    border-radius: 5px;
+    margin: 10px;
+    padding: 10px;
+    font-weight: 700;
+}
+
+
+
+.update:hover{
+    background: rgba(48, 211, 15, 0.1);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+    transition: border 5s, background-color 2s;
+ }
+
+ .delet:hover{
+    background: rgba(211, 15, 15, 0.1);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+    color: #000000;
+    transition: border 5s, background-color 2s;
+ }
+
+ .up textarea{
+    background-color: rgba(83, 223, 83, 0.58);
+    height: 200px;
+    color: rgb(0, 0, 0);
+    border-radius: 10px;
+    width: 75%;
+    margin: 10px;
+    padding: 10px;
+    font-size: 15px;
+ }
+
+@keyframes bod {
+    0% {
+    background-position: 200% 0; 
+  }
+  100% {
+    background-position: -120% 0; 
+  }
+}
+
+ .up div{
+    border-bottom:2px solid ;
+    border-image: linear-gradient(120deg,rgba(105, 213, 16, 0.465) 30%,rgba(255, 255, 255, 0.8) 50%, rgba(211, 9, 194, 0.477)    70%) 1;
+    background-size: 200% 100%;
+    background-position: 200% 0;
+    animation: bod 3s infinite linear;
+ }
+ .up input[type ="submit"]{
+    background-color: rgba(227, 160, 15, 0.534);
+    width: 120px;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 700;
+ }
+
+ .canves1{
+    
+    background-repeat: no-repeat;
+    background-position: center;
+    margin:20px;
+    padding: 30px;
+    border-radius: 20px;
+ }
+
+ .canves2{
+    background: linear-gradient(120deg,rgba(105, 213, 16, 0.465) 30%,rgba(255, 255, 255, 0.8) 50%, rgba(211, 9, 194, 0.477)    70%);
+    background-repeat: no-repeat;
+    background-position: center;
+    margin:20px;
+    padding: 30px;
+    border-radius: 20px;
+    height: 1000px;
+ }
+
+ .v999{
+    grid-template-columns: 1fr 1fr;
+    height: 1000px;
+ }
+
+ .canves1{
+    width:100%;
+    height:100vh;
+    overflow:hidden;
+}

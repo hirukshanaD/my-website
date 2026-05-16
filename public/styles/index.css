@@ -1,397 +1,917 @@
+/* ============================================================
+   NOTE WIKI — index.css
+   Mobile-first, fully responsive
+   Breakpoints:
+     xs  < 480px   (small phones)
+     sm  480–767px (large phones)
+     md  768–1023px (tablets)
+     lg  1024px+   (desktop — original design)
+   ============================================================ */
+
+/* ── Reset / Box model ── */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* ── Keyframes ── */
 @keyframes moveLeft {
-    from {
-        background-position: 0% 50%;
-    }
-    to {
-        background-position: 100% 50%;
-    }
+    from { background-position: 0% 50%; }
+    to   { background-position: 100% 50%; }
 }
 
 @keyframes glow {
     from {
         text-shadow:
             0 0 5px  rgba(109, 255, 99, 0.789),
-            0 0 10px  rgba(109, 255, 99, 0.789),
-            0 0 20px  rgba(109, 255, 99, 0.789);
+            0 0 10px rgba(109, 255, 99, 0.789),
+            0 0 20px rgba(109, 255, 99, 0.789);
     }
-
     to {
         text-shadow:
-            0 0 10px #ff0291bc ,
-            0 0 20px #ff0291bc ,
-            0 0 40px #ff0291bc ,
-            0 0 80px #ff0291bc ;
+            0 0 10px #ff0291bc,
+            0 0 20px #ff0291bc,
+            0 0 40px #ff0291bc,
+            0 0 80px #ff0291bc;
     }
 }
 
-header h1{
-    text-align: center;
-    font-family:  "Old Standard TT", serif;
-    font-size: 80px;
-    position: relative;
-    transform: translate(0%,-50%); 
-    color: rgb(255, 255, 255);
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
-    
-
+@keyframes bod {
+    0%   { background-position: 200% 0; }
+    100% { background-position: -120% 0; }
 }
 
-header h1{
+/* ============================================================
+   BODY
+   ============================================================ */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-image: linear-gradient(to left, #e91e6226, #4caf4f3e);
+}
+
+/* ============================================================
+   HEADER & FOOTER  (shared background)
+   ============================================================ */
+header,
+footer {
+    background: url("../images/map2.png") center 40% / cover no-repeat;
+    padding: 16px;
+    text-align: center;
+}
+
+header {
+    height: auto;
+    min-height: 90px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    position: relative;
+}
+
+footer {
+    height: auto;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+footer p {
+    font-size: 13px;
+    color: #fff;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+}
+
+/* ── Header title ── */
+header h1 {
+    font-family: "Old Standard TT", serif;
+    color: rgb(250, 244, 244);
+    text-align: center;
+    /* mobile default — scales up */
+    font-size: clamp(32px, 8vw, 80px);
     text-shadow:
         0 0 5px #0ff,
         0 0 10px #0ff,
         0 0 20px #0ff,
         0 0 40px #0ff;
-     animation: glow 1.5s infinite alternate;
+    animation: glow 1.5s infinite alternate;
+    /* remove the desktop-only transform */
+    transform: none;
 }
 
-header,footer{
-    background: url("../images/map2.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    height: 100px;    
-    padding: 30px;
-    background-position: 50% 40%;
-    background-repeat: no-repeat;
-    
+/* ── Header user/profile div ── */
+header div {
+    font-size: clamp(22px, 4vw, 50px);
+    padding: 8px 12px;
+    font-weight: 700;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: row;
+    align-content: flex-start;
+    width: auto;
+    max-width: 260px;
+    background-image: linear-gradient(to left, #e91e6226, #4caf4f3e);
+    border: 1px solid rgba(0,0,0,0.2);
+    /* reset desktop transform */
+    transform: none;
+    position: static;
 }
 
+header div span { flex: 1; }
 
-nev{
-    
-    grid-template-columns: 2fr 1fr ;
-    
-    grid-auto-flow: column;
+/* ============================================================
+   NAVIGATION  (<nev> custom element)
+   ============================================================ */
+nev {
+    display: block;
+    width: 100%;
+    background: rgba(0,0,0,0.08);
 }
 
-nev ul{
+nev ul {
     list-style: none;
-     
-      
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+    padding: 8px 12px;
 }
-nev ul li{
-    float: left;
-    padding: 20px;
-    border-radius: 10PX;
-    margin-left: 10px;
-    background:linear-gradient(90deg,#ff0291bc  50%,rgba(255, 255, 255, 0.095)  50%) ;
+
+nev ul li {
+    float: none;          /* override original float */
+    padding: 10px 14px;
+    border-radius: 10px;
+    background: linear-gradient(90deg, #ff0291bc 50%, rgba(255,255,255,0.095) 50%);
     background-size: 300% 300%;
     background-position: 72% 72%;
     transition: background-position 0.8s ease 0.2s;
     font-weight: 700;
-    
 }
-nev ul li:hover{
+
+nev ul li:hover {
     transition: 2s;
     background-position: 0% 0%;
-    
 }
 
-
-nev ul li a{
+nev ul li a {
     text-decoration: none;
     color: black;
-    font-size: 20PX;
-    
+    font-size: clamp(14px, 2.5vw, 20px);
+    white-space: nowrap;
 }
 
-header div{
-    
-    font-size: 50px;
-    padding: 10px;
-    font-weight: 700;
-    border-radius: 20px;
-    margin: 10px;
-    display: flex;
-    
-    flex-direction: row;
-    align-content:flex-start;
-    width: 300px;
-    background-image:linear-gradient(to left, #e91e6226, #4caf4f3e);
-    position: relative;
-    right: 0px;
-    margin-right: 0px;
-    border: 1px solid;
-    position: relative;
-    left: 0px;
-    transform: translate(300%,-240%);
-    
-}
-header div span{
-    flex: 1;
-}
-
-.v1 section form{
-    display: grid;
-    grid-template-rows: 2fr 1fr;
-    position:relative;
-    transform: translate(30%,20%);
-}
-.v1 section form input,button{
-    margin: 10px;
-    align-content: end;
-    justify-items: center;
-    border-radius: 15px;
-    border-color: rgb(42, 96, 132);
-    box-shadow: 0px 0px 0px;
-    height: 60PX;
-    background-color:  rgba(109, 255, 99, 0.789);
-    border: none;
-    border-bottom:3px solid rgb(10, 10, 10);
-    border-right:1px solid rgb(125, 125, 125);
-}
-.v1 section form input{
-    width: 400px;
-    justify-content: center;
-    align-items: center;
-}
-
-.v1 section form button{
-    background-color: rgba(109, 255, 99, 0.789);
-    width: 100px;
-    font-size: 20px;
-    font-weight: 700;
-    align-items: center;
-}
-
-main{
+/* ============================================================
+   MAIN LAYOUT  (sidebar + content)
+   ============================================================ */
+main {
     flex: 1;
     display: grid;
-    grid-template-columns: 1fr 3fr;
-    
+    /* mobile: stack vertically */
+    grid-template-columns: 1fr;
 }
 
-article{
-    background: url("../images/note.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    margin:20px;
-    padding: 30px;
-    border-radius: 20px;
+/* ── Aside / sidebar ── */
+main aside {
+    width: 100%;
 }
 
-main aside ul{
+main aside h2 {
+    padding: 10px 14px;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+main aside ul {
     list-style: none;
-    padding: 10px;
+    padding: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
 }
-main aside ul li{
-    padding: 10px;
-    margin: 10px;
-    border: 1px solid black;
+
+main aside ul li {
+    flex: 1 1 140px;
+    padding: 8px;
     border-radius: 10px;
-    background:linear-gradient(90deg,#14df0672  50%,rgba(255, 255, 255, 0.282)  50%) ;
+    background: linear-gradient(90deg, #14df0672 50%, rgba(255,255,255,0.282) 50%);
     background-size: 300% 300%;
     background-position: 73% 73%;
     transition: background-position 0.8s ease 0.2s;
     border: none;
 }
 
-main aside ul li a{
+main aside ul li a {
     text-decoration: none;
     color: black;
-    font-size: 20px;
-    padding: 20px;
-    
+    font-size: clamp(14px, 2.5vw, 20px);
+    padding: 6px;
+    display: block;
 }
 
-main aside ul li:hover{
-    
+main aside ul li:hover {
     transition: 2s;
     background-position: 0% 0%;
 }
-footer{
-    height: 100px;
-    text-align: center;
 
-    
-}
-body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh; /* Full height of the viewport */
-    margin: 0;
-    background-image: linear-gradient(to left, #e91e6226, #4caf4f3e);      
+/* ── Main article ── */
+article {
+    background: url("../images/note.png") center / cover no-repeat;
+    margin: 12px;
+    padding: 16px;
+    border-radius: 16px;
+    min-width: 0;  /* prevent grid blowout */
 }
 
-main article .se1{
-    font-size: 70px;
+/* ============================================================
+   INDEX PAGE  (.v1 — search)
+   ============================================================ */
+.v1 section form {
+    display: grid;
+    grid-template-rows: auto auto;
+    padding: 16px;
+    transform: none;
+}
+
+.v1 section form input,
+.v1 section form button {
+    margin: 8px 0;
+    border-radius: 15px;
+    height: 52px;
+    background-color: rgba(109, 255, 99, 0.789);
+    border: none;
+    border-bottom: 3px solid rgb(10, 10, 10);
+    border-right: 1px solid rgb(125, 125, 125);
+    width: 100%;
+}
+
+.v1 section form input {
+    font-size: 16px;  /* prevents iOS zoom */
+    padding: 0 14px;
+}
+
+.v1 section form button {
+    background-color: rgba(109, 255, 99, 0.789);
+    font-size: 18px;
+    font-weight: 700;
+}
+
+/* Search heading */
+main article .se1 {
+    font-size: clamp(28px, 6vw, 70px);
     text-align: center;
     font-weight: 700;
-    color: #000000;
-    background-color: rgba(246, 246, 246, 0.064); 
-    text-shadow: 3px 3px 3px ;
-    padding: 5px 5px; 
+    color: #000;
+    background-color: rgba(246,246,246,0.064);
+    text-shadow: 3px 3px 3px rgba(0,0,0,0.3);
+    padding: 6px 8px;
     border-radius: 8px;
 }
- .vlog{
+
+/* ============================================================
+   NOTE VIEW  (.vlog)
+   ============================================================ */
+.vlog {
     background-image: none;
     display: flex;
     flex-direction: column;
+    gap: 12px;
 }
 
-main article pre{
-    background-color: #2e343b;
-    color: white;
-    border-radius: 10px;    
+.vlog p {
+    font-size: clamp(14px, 2vw, 17px);
+    line-height: 1.7;
 }
 
 main article pre {
     background: #111;
     color: #0f0;
-    padding: 10px;
+    padding: 12px;
     border-radius: 15px;
     overflow-x: auto;
+    font-size: clamp(12px, 1.8vw, 14px);
+    white-space: pre-wrap;
+    word-break: break-all;
 }
 
-main article img{
-    border-radius: 20px;
-    width: 500px;
-}
-main article figure{
-    position: relative;
-    transform: translate(10%,0%);
-    
-}
-.form{
-    background: url("../images/hand.png");   
-    background-position: right;
-    background-repeat: no-repeat;
-    background-size: 190%;
+main article img {
+    border-radius: 16px;
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    display: block;
 }
 
-.form section form input{
-    height: 40px;
-    position: relative;
-
+main article figure {
+    transform: none;
+    margin: 12px 0;
 }
-.form section form{
-    margin-top:30px ;
+
+main article figcaption {
+    font-size: 12px;
+    color: #555;
+    margin-top: 4px;
+}
+
+/* ── Update / Delete buttons on note view ── */
+.nbut {
     display: flex;
-    flex-direction: column;
-    transform: translate(-0%,-10%);
-}
-
-.form section form div{
-    display: grid;
-    grid-template-columns: 1fr 4fr;
-    
-}
-
-.form section form div textarea,input{
-    margin: 10px;
-    
-    border-radius: 15px;
-    border-color: rgb(42, 96, 132);
-    box-shadow: 0px 0px 0px;
-    height: 60PX;
-    background-color:  rgba(109, 255, 99, 0.789);
-    border: none;
-    border-bottom:3px solid rgb(10, 10, 10);
-    border-right:1px solid rgb(125, 125, 125);   
-}
-
-.form section form  label{
-    font-size: 25px;
-    font-weight: 500;
-}
-
-.form section form  .but{
-    margin: 10px;
-    border-radius: 15px;
-    border-color: rgb(42, 96, 132);
-    box-shadow: 0px 0px 0px;
-    height: 60PX;
-    background-color:  rgba(227, 25, 253, 0.964);
-    border: none;
-    border-bottom:3px solid rgb(10, 10, 10);
-    border-right:1px solid rgb(125, 125, 125);   
-    font-size: 20px;
-    font-weight: 700;
-}
-.con {
-    background: url("../images/let1.png");  
-    background-size: 100%;
-    background-repeat: repeat; 
-}
-
-.nbut{
-    display: flex;
-    position: relative;
-    transform: translate(200%,-30%);
-    color: #000000;
-    
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    transform: none;
+    padding: 12px;
     text-decoration: none;
-    font-size: 20px;
-    gap: 50px;
+    font-size: 16px;
 }
 
 .nbut .update {
     background-color: rgba(32, 181, 32, 0.633);
     border-radius: 5px;
-    margin: 10px;
-    padding: 10px;
+    margin: 0;
+    padding: 10px 20px;
     font-weight: 700;
-
-
+    cursor: pointer;
+    border: none;
+    font-size: 16px;
 }
 
-.nbut .delet{
-    color: #ffffff;
+.nbut .delet {
+    color: #fff;
     background-color: rgba(227, 27, 207, 0.799);
     border-radius: 5px;
-    margin: 10px;
-    padding: 10px;
+    margin: 0;
+    padding: 10px 20px;
     font-weight: 700;
+    cursor: pointer;
+    border: none;
+    font-size: 16px;
 }
 
-
-
-.update:hover{
+.update:hover {
     background: rgba(48, 211, 15, 0.1);
     backdrop-filter: blur(10px);
     box-shadow: 0 4px 30px rgba(0,0,0,0.1);
-    transition: border 5s, background-color 2s;
- }
+    transition: background-color 2s;
+}
 
- .delet:hover{
+.delet:hover {
     background: rgba(211, 15, 15, 0.1);
     backdrop-filter: blur(10px);
     box-shadow: 0 4px 30px rgba(0,0,0,0.1);
-    color: #000000;
-    transition: border 5s, background-color 2s;
- }
-
- .up textarea{
-    background-color: rgba(83, 223, 83, 0.58);
-    height: 200px;
-    color: rgb(0, 0, 0);
-    border-radius: 10px;
-    width: 75%;
-    margin: 10px;
-    padding: 10px;
-    font-size: 15px;
- }
-
-@keyframes bod {
-    0% {
-    background-position: 200% 0; 
-  }
-  100% {
-    background-position: -120% 0; 
-  }
+    color: #000;
+    transition: background-color 2s;
 }
 
- .up div{
-    border-bottom:2px solid ;
-    border-image: linear-gradient(120deg,rgba(105, 213, 16, 0.465) 30%,rgba(255, 255, 255, 0.8) 50%, rgba(211, 9, 194, 0.477)    70%) 1;
+/* ============================================================
+   CREATE NOTE  (.form)
+   ============================================================ */
+.form {
+    background: url("../images/hand.png") right center / auto 100% no-repeat;
+}
+
+.form section form {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    transform: none;
+    gap: 8px;
+    padding: 0 8px;
+}
+
+.form section form div {
+    display: grid;
+    grid-template-columns: 1fr;   /* mobile: stack label above input */
+    gap: 4px;
+}
+
+.form section form label {
+    font-size: clamp(15px, 2.5vw, 25px);
+    font-weight: 500;
+}
+
+.form section form div textarea,
+.form section form div input {
+    margin: 6px 0;
+    border-radius: 15px;
+    height: 52px;
+    background-color: rgba(109, 255, 99, 0.789);
+    border: none;
+    border-bottom: 3px solid rgb(10, 10, 10);
+    border-right: 1px solid rgb(125, 125, 125);
+    font-size: 16px;  /* prevent iOS zoom */
+    padding: 0 12px;
+    width: 100%;
+}
+
+.form section form .but {
+    margin: 8px 0;
+    border-radius: 15px;
+    height: 52px;
+    background-color: rgba(227, 25, 253, 0.964);
+    border: none;
+    border-bottom: 3px solid rgb(10, 10, 10);
+    border-right: 1px solid rgb(125, 125, 125);
+    font-size: 18px;
+    font-weight: 700;
+    width: 100%;
+    cursor: pointer;
+}
+
+/* ============================================================
+   CONTACT PAGE  (.con)
+   ============================================================ */
+.con {
+    background: url("../images/let1.png") center / cover repeat;
+    min-height: 300px;
+}
+
+/* ============================================================
+   UPDATE PAGE  (.up)
+   ============================================================ */
+main.up {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 12px;
+}
+
+.up textarea {
+    background-color: rgba(83, 223, 83, 0.58);
+    min-height: 160px;
+    color: rgb(0, 0, 0);
+    border-radius: 10px;
+    width: 100%;
+    padding: 10px;
+    font-size: 15px;
+    border: none;
+    border-bottom: 2px solid rgba(0,0,0,0.3);
+    resize: vertical;
+}
+
+.up div {
+    border-bottom: 2px solid;
+    border-image: linear-gradient(
+        120deg,
+        rgba(105, 213, 16, 0.465) 30%,
+        rgba(255,255,255,0.8) 50%,
+        rgba(211, 9, 194, 0.477) 70%
+    ) 1;
     background-size: 200% 100%;
     background-position: 200% 0;
     animation: bod 3s infinite linear;
- }
- .up input[type ="submit"]{
+    padding: 10px 0;
+}
+
+.up input[type="submit"] {
     background-color: rgba(227, 160, 15, 0.534);
-    width: 120px;
-    color: #ffffff;
+    width: 100%;
+    color: #fff;
     font-size: 15px;
     font-weight: 700;
+    height: 48px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    margin-top: 8px;
+}
+
+.up label {
+    font-size: clamp(14px, 2.5vw, 20px);
+    font-weight: 500;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.up form div {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 10px;
+}
+
+.up input[type="text"],
+.up input[type="date"],
+.up input[type="file"] {
+    width: 100%;
+    height: 48px;
+    border-radius: 10px;
+    background-color: rgba(109, 255, 99, 0.789);
+    border: none;
+    border-bottom: 3px solid rgb(10, 10, 10);
+    border-right: 1px solid rgb(125, 125, 125);
+    padding: 0 12px;
+    font-size: 16px;
+}
+
+/* ============================================================
+   LOGIN PAGE (.v999 — Three.js canvas)
+   ============================================================ */
+.v999 {
+    display: grid;
+    grid-template-columns: 1fr;
+    min-height: 400px;
+}
+
+.canves1 {
+    width: 100%;
+    height: 50vh;
+    min-height: 250px;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+}
+
+.canves2 {
+    background: linear-gradient(
+        120deg,
+        rgba(105, 213, 16, 0.465) 30%,
+        rgba(255,255,255,0.8) 50%,
+        rgba(211, 9, 194, 0.477) 70%
+    );
+    margin: 0;
+    padding: 20px;
+    border-radius: 0;
+    min-height: 200px;
+}
+
+/* ============================================================
+   ERROR PAGE
+   ============================================================ */
+.downT {
+    font-size: clamp(12px, 2vw, 16px);
+    color: rgb(19, 19, 19);
+    text-align: center;
+    width: 100% !important;
+    background-color: rgba(231, 210, 210, 0.169);
+    border-radius: 5px;
+    overflow: auto;
+    word-break: break-word;
+    padding: 12px;
+}
+
+/* ============================================================
+   TABLET  768px+
+   ============================================================ */
+@media (min-width: 768px) {
+
+    /* Header */
+    header {
+        flex-direction: row;
+        justify-content: center;
+        min-height: 100px;
+        padding: 20px 30px;
+    }
+
+    header h1 {
+        font-size: clamp(44px, 6vw, 80px);
+    }
+
+    header div {
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    /* Nav */
+    nev ul {
+        justify-content: flex-start;
+        padding: 10px 20px;
+    }
+
+    nev ul li {
+        padding: 14px 18px;
+    }
+
+    /* Main layout: sidebar + content side by side */
+    main {
+        grid-template-columns: 1fr 3fr;
+    }
+
+    /* Aside back to vertical list */
+    main aside ul {
+        display: block;
+    }
+
+    main aside ul li {
+        flex: none;
+        margin: 8px;
+    }
+
+    /* Create note form: label | input side by side */
+    .form section form div {
+        grid-template-columns: 1fr 4fr;
+        align-items: center;
+    }
+
+    /* Search form */
+    .v1 section form {
+        padding: 20px;
+        transform: translate(15%, 10%);
+    }
+
+    .v1 section form input {
+        width: 80%;
+    }
+
+    .v1 section form button {
+        width: 120px;
+    }
+
+    /* Note buttons */
+    .nbut {
+        justify-content: flex-end;
+        padding: 12px 20px;
+    }
+
+    /* Update aside */
+    main.up {
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+        align-items: start;
+    }
+
+    .up textarea {
+        width: 85%;
+    }
+
+    .up input[type="submit"] {
+        width: 140px;
+    }
+
+    /* Three.js page */
+    .v999 {
+        grid-template-columns: 1fr 1fr;
+        height: 80vh;
+    }
+
+    .canves1 {
+        height: 100%;
+    }
+
+    .canves2 {
+        height: 100%;
+    }
+}
+
+/* ============================================================
+   DESKTOP  1024px+  (restore full original design)
+   ============================================================ */
+@media (min-width: 1024px) {
+
+    /* Header */
+    header {
+        height: 100px;
+        padding: 30px;
+    }
+
+    header h1 {
+        font-size: 80px;
+        /* original desktop transform */
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    header div {
+        font-size: 50px;
+        width: 300px;
+        right: 0;
+        transform: translateY(-50%);
+    }
+
+    /* Nav */
+    nev {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        grid-auto-flow: column;
+        background: transparent;
+    }
+
+    nev ul {
+        display: block;    /* restore floated list */
+        padding: 10px 16px;
+    }
+
+    nev ul li {
+        float: left;
+        padding: 20px;
+        margin-left: 10px;
+    }
+
+    nev ul li a {
+        font-size: 20px;
+    }
+
+    /* Main grid */
+    main {
+        grid-template-columns: 1fr 3fr;
+    }
+
+    main aside ul {
+        padding: 10px;
+        display: block;
+    }
+
+    main aside ul li {
+        padding: 10px;
+        margin: 10px;
+    }
+
+    main aside ul li a {
+        font-size: 20px;
+        padding: 20px;
+    }
+
+    /* Article */
+    article {
+        margin: 20px;
+        padding: 30px;
+        border-radius: 20px;
+    }
+
+    /* Search */
+    .v1 section form {
+        transform: translate(30%, 20%);
+    }
+
+    .v1 section form input {
+        width: 400px;
+    }
+
+    .v1 section form button {
+        width: 100px;
+        font-size: 20px;
+    }
+
+    /* .se1 heading */
+    main article .se1 {
+        font-size: 70px;
+    }
+
+    /* Image */
+    main article img {
+        width: 500px;
+    }
+
+    main article figure {
+        transform: translate(10%, 0%);
+    }
+
+    /* Note buttons */
+    .nbut {
+        display: flex;
+        position: relative;
+        transform: translate(200%, -30%);
+        gap: 50px;
+        font-size: 20px;
+    }
+
+    /* Create note form */
+    .form section form {
+        transform: translate(0%, -10%);
+    }
+
+    .form section form div {
+        grid-template-columns: 1fr 4fr;
+    }
+
+    .form section form label {
+        font-size: 25px;
+    }
+
+    .form section form div textarea,
+    .form section form div input {
+        height: 60px;
+    }
+
+    .form section form .but {
+        height: 60px;
+        font-size: 20px;
+    }
+
+    /* Update */
+    main.up {
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+        align-items: start;
+    }
+
+    .up textarea {
+        width: 75%;
+        height: 200px;
+    }
+
+    .up input[type="submit"] {
+        width: 120px;
+    }
+
+    .up div {
+        padding: 0;
+    }
+
+    /* Three.js page */
+    .v999 {
+        grid-template-columns: 1fr 1fr;
+        height: 1000px;
+    }
+
+    .canves1 {
+        width: 100%;
+        height: 100vh;
+    }
+
+    .canves2 {
+        height: 1000px;
+    }
+}
+
+/* ============================================================
+   SMALL PHONES  (max 479px)  — tighten things further
+   ============================================================ */
+@media (max-width: 479px) {
+
+    header h1 {
+        font-size: clamp(26px, 10vw, 40px);
+    }
+
+    nev ul {
+        gap: 4px;
+        padding: 6px 8px;
+    }
+
+    nev ul li {
+        padding: 8px 10px;
+    }
+
+    nev ul li a {
+        font-size: 13px;
+    }
+
+    main article .se1 {
+        font-size: 28px;
+    }
+
+    .nbut {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+    }
+
+    .nbut .update,
+    .nbut .delet {
+        text-align: center;
+        width: 100%;
+    }
+
+    .form section form .but {
+        font-size: 16px;
+    }
+
+    /* Error text readable on tiny screens */
+    .downT {
+        font-size: 12px;
+        padding: 8px;
+    }
+}
+
+/* ============================================================
+   PRINT  (optional — clean output)
+   ============================================================ */
+@media print {
+    header, footer, nev, aside, .nbut { display: none; }
+    main { display: block; }
+    article { margin: 0; padding: 0; background: none; border: none; }
+    body { background: white; }
+}
+
+.canves1{
+    background-color: #0ff;    
+    background-repeat: no-repeat;
+    background-position: center;
+    margin:20px;
+    padding: 30px;
+    border-radius: 20px;
+    height: 1000px;
+    
+
+ }
+
+ .canves2{
+    background: linear-gradient(120deg,rgba(105, 213, 16, 0.465) 30%,rgba(255, 255, 255, 0.8) 50%, rgba(211, 9, 194, 0.477)    70%);
+    background-repeat: no-repeat;
+    background-position: center;
+    margin:20px;
+    padding: 30px;
+    border-radius: 20px;
+    height: 1000px;
+    
  }

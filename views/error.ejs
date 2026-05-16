@@ -1,0 +1,11 @@
+<%- include("hedder.ejs")%> 
+        <main class="V69" ">
+            <%- include("aside.ejs",{titels:titels})%>
+            <article style="background-image: linear-gradient(120deg,rgba(105, 213, 16, 0.465) 30%,rgba(255, 255, 255, 0.8) 50%, rgba(211, 9, 194, 0.477)    70%);">
+                <section>
+                    <div class="" style="font-size: 7vw;color: aliceblue;text-align: center; text-shadow: 5px 5px 5px  red;">ERROR</div>
+                    <div class="downT" style="font-size: 1vw;color: rgb(19, 19, 19);text-align: center;width: 1000px; background-color: rgba(231, 210, 210, 0.169); border-radius: 5px;overflow: scroll; "><%= err%></div>
+                </section>
+            </article>
+        </main>
+<%- include("fotter.ejs")%>
